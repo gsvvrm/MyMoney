@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_mine"
+        android:enabled="true"
+        android:icon="@drawable/ic_main"
+        android:title="@string/main"
+        android:visible="true" />
+    <item
+        android:id="@+id/page_planning"
+        android:enabled="true"
+        android:icon="@drawable/ic_planning"
+        android:title="@string/planning"
+        android:visible="true" />
+    <item
+        android:id="@+id/page_categories"
+        android:enabled="true"
+        android:icon="@drawable/ic_categories"
+        android:title="@string/categories"
+        android:visible="true" />
+    <item
+        android:id="@+id/page_history"
+        android:enabled="true"
+        android:icon="@drawable/ic_history"
+        android:title="@string/history"
+        android:visible="true" />
+    <item android:title=" " />
+
+</menu>
