@@ -115,15 +115,19 @@ class MainActivity : AppCompatActivity() {
             R.id.add_category -> {
                 val intent = Intent(this, CategoryEditor::class.java)
                 startActivity(intent)
-                isFabInvisible()
                 true
             }
             R.id.add_payment -> {
                 val intent = Intent(this, PaymentEditor::class.java)
                 startActivity(intent)
-                isFabInvisible()
                 true
             }
+            R.id.add_mandatory_pay -> {
+                val intent = Intent(this, MandatoryPayEditor::class.java)
+                startActivity(intent)
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

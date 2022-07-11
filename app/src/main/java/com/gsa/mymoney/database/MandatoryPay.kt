@@ -6,9 +6,11 @@ import java.util.*
 
 @Entity
 data class MandatoryPay(@PrimaryKey val id: UUID = UUID.randomUUID(),
-                        var date: Date = Date(),
+                        var dayOfMonthForPay: Int,
                         var nameBuy:String = "",
                         var payment:String = "",
                         var category:String = "",
+                        var price: Float = 0f,
+                        var isRepeat: Boolean = true,
                         var isPaid: Boolean = false,
                         var notePay:String = "")

@@ -9,23 +9,55 @@
     <string name="history">История</string>
     <string name="new_purchase">Новая покупка</string>
 
+    //подсказки
+    <string name="hint_new_pay">Например Бета-Банк</string>
+    <string name="hint_new_category">Например Авто</string>
+    <string name="hint_category_budget">План траты (руб)</string>
+    <string name="hint_purchase_name">Название траты</string>
+    <string name="hint_profit_name">Название дохода</string>
+    <string name="hint_input_price">Введите сумму</string>
+    <string name="hint_no_important">Не обязательно</string>
+    <string name="hint_day_pay">Введите число от 1 до 31</string>
+
+
+    //подписи инструкции
+    <string name="option_category">Выбор категории траты</string>
+    <string name="option_pay_method">Выбор способа оплаты</string>
+    <string name="option_point_profit">Выбор места зачисления дохода</string>
+    <string name="sum_balance">Общая сумма</string>
+    <string name="transfer_from">Перевести из</string>
+    <string name="transfer_to">Перевести в</string>
+    <string name="repeat_pay">Повторять платеж</string>
+
+
+    <string name="price_purchase">Сумма оплаты</string>
+    <string name="price_mandatory_pay">Сумма обязательного платежа</string>
+    <string name="day_pay">Предполагаемое число платежа</string>
+
+
+    <string name="price_profit">Сумма дохода</string>
+    <string name="price_transfer">Сумма перевода</string>
+    <string name="description">Примечание</string>
+
     //кнопки
     <string name="profit">Доход</string>
     <string name="spend">Трата</string>
     <string name="transfer">Перевод</string>
 
-    //настройка
-    <string name="add_category">Добавить категорию</string>
-    <string name="add_payment">Добавить оплату</string>
-    <string name="title_activity_category_editor">CategoryEditor</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="save_category">Сохранить категорию</string>
+    <string name="save_payment">Сохранить оплату</string>
+    <string name="save_mandatory_pay">Сохранить платеж</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="add_purchase">Добавить трату</string>
+    <string name="add_profit">Добавить доход</string>
+    <string name="set_transfer">Перевести</string>
+
+
+    //настройка
+    <string name="add_category">Добавить категорию траты</string>
+    <string name="add_payment">Добавить способ оплаты</string>
+    <string name="add_mandatory_pay">Добавить обязательный платеж</string>
+    <string name="title_activity_category_editor">CategoryEditor</string>
 
 
 </resources>

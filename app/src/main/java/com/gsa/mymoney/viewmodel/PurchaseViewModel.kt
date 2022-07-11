@@ -6,25 +6,26 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.gsa.mymoney.database.AppDBRepository
 import com.gsa.mymoney.database.Purchase
+import com.gsa.mymoney.database.PurchaseDBRepository
 import java.util.*
 
 class PurchaseViewModel: ViewModel() {
 
-    private val appDBRepository = AppDBRepository.get()
+    private val purchaseDBRepository = PurchaseDBRepository.get()
     private val purchaseIdLiveData = MutableLiveData<UUID>()
 
     //добавление покупки
-    fun addPurchase (purchase: Purchase) = appDBRepository.addPurchase(purchase)
+    fun addPurchase (purchase: Purchase) = purchaseDBRepository.addPurchase(purchase)
 
     //обновление покупки
-    fun updatePurchase (purchase: Purchase) = appDBRepository.updatePurchase(purchase)
+    fun updatePurchase (purchase: Purchase) = purchaseDBRepository.updatePurchase(purchase)
 
     //удаление покупки
-    fun deletePurchase (purchase: Purchase) = appDBRepository.deletePurchase(purchase)
+    fun deletePurchase (purchase: Purchase) = purchaseDBRepository.deletePurchase(purchase)
 
     //получение одной покупки
     var purchaseLiveData: LiveData<Purchase?> = Transformations.switchMap(purchaseIdLiveData){ purchaseID ->
-        appDBRepository.getPurchase(purchaseID)
+        purchaseDBRepository.getPurchase(purchaseID)
     }
 
     fun loadPurchase (purchaseID: UUID) {
@@ -32,6 +33,12 @@ class PurchaseViewModel: ViewModel() {
     }
 
     //получение списка покупок
-    val purchasesListLiveData = appDBRepository.getPurchases()
+    val purchasesListLiveData = purchaseDBRepository.getPurchases()
+
+    //запрос баланса в текущем месяце
+
+    //запрос затрат для категории
+    fun getPriceForCategory (category: String, date1: Date, date2: Date) : LiveData<Float?> =
+        purchaseDBRepository.getPriceForCategory(category,date1,date2)
 
 }

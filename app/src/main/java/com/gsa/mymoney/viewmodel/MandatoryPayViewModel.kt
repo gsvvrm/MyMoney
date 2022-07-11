@@ -6,25 +6,26 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.gsa.mymoney.database.AppDBRepository
 import com.gsa.mymoney.database.MandatoryPay
+import com.gsa.mymoney.database.MandatoryPayDBRepository
 import java.util.*
 
 class MandatoryPayViewModel: ViewModel() {
 
-    private val appDBRepository = AppDBRepository.get()
+    private val mandatoryPayDBRepository = MandatoryPayDBRepository.get()
     private val mandatoryPayIdLiveData = MutableLiveData<UUID>()
 
     //добавление платежа
-    fun addMandatoryPay (mandatoryPay: MandatoryPay) = appDBRepository.addMandatoryPay(mandatoryPay)
+    fun addMandatoryPay (mandatoryPay: MandatoryPay) = mandatoryPayDBRepository.addMandatoryPay(mandatoryPay)
 
     //обновление платежа
-    fun updateMandatoryPay (mandatoryPay: MandatoryPay) = appDBRepository.updateMandatoryPay(mandatoryPay)
+    fun updateMandatoryPay (mandatoryPay: MandatoryPay) = mandatoryPayDBRepository.updateMandatoryPay(mandatoryPay)
 
     //удаление платежа
-    fun deleteMandatoryPay (mandatoryPay: MandatoryPay) = appDBRepository.deleteMandatoryPay(mandatoryPay)
+    fun deleteMandatoryPay (mandatoryPay: MandatoryPay) = mandatoryPayDBRepository.deleteMandatoryPay(mandatoryPay)
 
     //получение одного платежа
     var mandatoryPayLiveData: LiveData<MandatoryPay?> = Transformations.switchMap(mandatoryPayIdLiveData){ mandatoryPayID ->
-        appDBRepository.getMandatoryPay(mandatoryPayID)
+        mandatoryPayDBRepository.getMandatoryPay(mandatoryPayID)
     }
 
     fun loadMandatoryPay (mandatoryPayID: UUID) {
@@ -32,5 +33,6 @@ class MandatoryPayViewModel: ViewModel() {
     }
 
     //получение списка платежей
-    val mandatoryPaisListLiveData = appDBRepository.getMandatoryPais()
+    val mandatoryPaisListLiveData = mandatoryPayDBRepository.getMandatoryPais()
+
 }

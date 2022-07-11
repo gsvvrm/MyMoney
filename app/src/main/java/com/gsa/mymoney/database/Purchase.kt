@@ -10,4 +10,5 @@ data class Purchase (@PrimaryKey val id: UUID = UUID.randomUUID(),
                     var nameBuy:String = "",
                     var payment:String = "",
                     var category:String = "",
+                    var price: Float = 0f,
                     var notePay:String = "")

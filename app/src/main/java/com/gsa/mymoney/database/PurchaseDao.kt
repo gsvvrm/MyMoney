@@ -17,11 +17,19 @@ interface PurchaseDao {
     fun deletePurchase (purchase: Purchase)
 
     //запрос всех покупок
-    @Query ("select * from Purchase")
+    @Query ("select * from Purchase order by date DESC")
     fun getPurchases() : LiveData<List<Purchase>>
 
     //запрос одной покупки
     @Query ("select * from Purchase where id=(:id)")
     fun getPurchase (id: UUID) : LiveData<Purchase?>
+
+    //запрос баланса в текущем месяце
+
+    //запрос затрат для категории
+    @Query ("select sum(price) from Purchase where category = (:category) and date between :date1 and :date2 order by date desc")
+    fun getPriceForCategory (category: String, date1: Date, date2: Date) : LiveData<Float?>
+
+
 
 }
