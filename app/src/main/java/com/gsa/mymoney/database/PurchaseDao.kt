@@ -30,6 +30,14 @@ interface PurchaseDao {
     @Query ("select sum(price) from Purchase where category = (:category) and date between :date1 and :date2 order by date desc")
     fun getPriceForCategory (category: String, date1: Date, date2: Date) : LiveData<Float?>
 
+    //запрос дат действий
+    @Query("select distinct date from Purchase order by date desc")
+    fun getDatePurchaseList () : LiveData<List<Date>>
+
+    //запрос действий за дату
+    @Query ("select * from Purchase where date=(:date)")
+    fun getPurchasesForDate(date: Date) : LiveData<List<Purchase>>
+
 
 
 }

@@ -62,6 +62,11 @@ class HistoryFragment : Fragment() {
         })
     }
 
+    //холдер для даты
+
+    //адаптер для даты
+
+
     //холдер для покупки
     private inner class PurchaseHolder (view: View) : RecyclerView.ViewHolder(view) {
 
