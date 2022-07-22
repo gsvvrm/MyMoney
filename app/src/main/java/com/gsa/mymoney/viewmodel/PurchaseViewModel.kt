@@ -41,4 +41,10 @@ class PurchaseViewModel: ViewModel() {
     fun getPriceForCategory (category: String, date1: Date, date2: Date) : LiveData<Float?> =
         purchaseDBRepository.getPriceForCategory(category,date1,date2)
 
+    //запрос дат действий
+    fun getDatePurchaseList () : LiveData<List<String>> = purchaseDBRepository.getDatePurchaseList()
+
+    //запрос действий за дату
+    fun getPurchasesForDate(dateTypeS:String) : LiveData<List<Purchase>> = purchaseDBRepository.getPurchasesForDate(dateTypeS)
+
 }

@@ -46,7 +46,6 @@ class PurchaseDBRepository private constructor(context: Context) {
         purchaseDao.getPriceForCategory(category,date1,date2)
 
 
-
     companion object{
         private var INSTANCE: PurchaseDBRepository? = null
 
@@ -64,4 +63,10 @@ class PurchaseDBRepository private constructor(context: Context) {
             throw IllegalStateException ("PurchaseDBRepository must be initialized")
         }
     }
+
+    //запрос дат действий
+    fun getDatePurchaseList () : LiveData<List<String>> = purchaseDao.getDatePurchaseList()
+
+    //запрос действий за дату
+    fun getPurchasesForDate(dateTypeS:String) : LiveData<List<Purchase>> = purchaseDao.getPurchasesForDate(dateTypeS)
 }

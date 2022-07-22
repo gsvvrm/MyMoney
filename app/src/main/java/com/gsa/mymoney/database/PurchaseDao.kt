@@ -31,12 +31,12 @@ interface PurchaseDao {
     fun getPriceForCategory (category: String, date1: Date, date2: Date) : LiveData<Float?>
 
     //запрос дат действий
-    @Query("select distinct date from Purchase order by date desc")
-    fun getDatePurchaseList () : LiveData<List<Date>>
+    @Query("select distinct dateTypeString from Purchase order by date desc")
+    fun getDatePurchaseList () : LiveData<List<String>>
 
     //запрос действий за дату
-    @Query ("select * from Purchase where date=(:date)")
-    fun getPurchasesForDate(date: Date) : LiveData<List<Purchase>>
+    @Query ("select * from Purchase where dateTypeString=(:dateTypeS)")
+    fun getPurchasesForDate(dateTypeS:String) : LiveData<List<Purchase>>
 
 
 

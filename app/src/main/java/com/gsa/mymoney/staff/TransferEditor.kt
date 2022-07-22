@@ -13,14 +13,22 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gsa.mymoney.R
 import com.gsa.mymoney.database.PaymentMethod
+import com.gsa.mymoney.database.Purchase
 import com.gsa.mymoney.viewmodel.PaymentMethodViewModel
+import com.gsa.mymoney.viewmodel.PurchaseViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "TransferEditor"
 
 class TransferEditor : AppCompatActivity() {
 
+    private lateinit var purchase: Purchase
     private var paymentMethodFrom = PaymentMethod()
     private var paymentMethodTo = PaymentMethod()
+
+    private val calendar: Calendar = Calendar.getInstance()
+    var sdf: SimpleDateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var spinnerOptionPayFrom: Spinner
     private lateinit var spinnerOptionPayTo: Spinner
@@ -29,6 +37,10 @@ class TransferEditor : AppCompatActivity() {
 
     private val paymentMethodViewModel: PaymentMethodViewModel by lazy {
         ViewModelProvider (this, defaultViewModelProviderFactory).get(PaymentMethodViewModel::class.java)
+    }
+
+    private val purchaseViewModel: PurchaseViewModel by lazy {
+        ViewModelProvider (this, defaultViewModelProviderFactory).get(PurchaseViewModel::class.java)
     }
 
 
@@ -45,6 +57,8 @@ class TransferEditor : AppCompatActivity() {
         btnAddTransfer = findViewById(R.id.btnAddTransfer)
 
         btnAddTransfer.isEnabled=false
+
+
 
         paymentMethodViewModel.paymentMethodStringListLiveData.observe(this, Observer {
                 paymentMethodList -> paymentMethodList
@@ -107,10 +121,30 @@ class TransferEditor : AppCompatActivity() {
             Log.d(TAG, "Выбор из  $paymentMethodFrom")
             paymentMethodTo = paymentMethods.last { it.paymentName == spinnerOptionPayTo.selectedItem.toString() }
             Log.d(TAG, "Выбор в $paymentMethodTo")
+            addTransfer()
             newBalanceSet()
 
         }
         })
+
+    }
+
+    //функция добавления перевода в базу
+    private fun addTransfer(){
+
+        purchase = Purchase(
+            UUID.randomUUID(),
+            calendar.time,
+            "Перевод ${editTextPriceTransfer.text.toString()} из ${spinnerOptionPayFrom.selectedItem.toString()} в ${spinnerOptionPayTo.selectedItem.toString()}",
+            "",
+             "",
+            0f,
+            "",
+            sdf.format(calendar.time).toString())
+
+
+
+        purchaseViewModel.addPurchase(purchase)
 
     }
 

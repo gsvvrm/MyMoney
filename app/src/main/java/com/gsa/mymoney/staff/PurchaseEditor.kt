@@ -30,7 +30,7 @@ class PurchaseEditor : AppCompatActivity() {
     private var paymentMethod: PaymentMethod = PaymentMethod()
 
     private val calendar: Calendar = Calendar.getInstance()
-    var sdf: SimpleDateFormat = SimpleDateFormat("MM.yyyy")
+    var sdf: SimpleDateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var editTextNamePurchase: EditText
     private lateinit var spinnerOptionCategory: Spinner
@@ -178,7 +178,8 @@ class PurchaseEditor : AppCompatActivity() {
             spinnerOptionPay.selectedItem.toString(),
             spinnerOptionCategory.selectedItem.toString(),
             -editTextPricePurchase.text.toString().replace(",",".").toFloat(),
-            editTextNotePay.text.toString())
+            editTextNotePay.text.toString(),
+            sdf.format(calendar.time).toString())
 
         updateBalancePayMethod()
 

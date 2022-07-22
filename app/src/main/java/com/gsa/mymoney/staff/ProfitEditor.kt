@@ -28,7 +28,7 @@ class ProfitEditor : AppCompatActivity() {
     private var paymentMethod: PaymentMethod = PaymentMethod()
 
     private val calendar: Calendar = Calendar.getInstance()
-    var sdf: SimpleDateFormat = SimpleDateFormat("MM.yyyy")
+    var sdf: SimpleDateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var editTextNameProfit: EditText
     private lateinit var spinnerOptionProfitPoint: Spinner
@@ -149,7 +149,8 @@ class ProfitEditor : AppCompatActivity() {
             spinnerOptionProfitPoint.selectedItem.toString(),
             "",
             editTextPriceProfit.text.toString().replace(",",".").toFloat(),
-            editTextNoteProfit.text.toString())
+            editTextNoteProfit.text.toString() ,
+            sdf.format(calendar.time).toString())
 
         updateBalancePayMethod()
 

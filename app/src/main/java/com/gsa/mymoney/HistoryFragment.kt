@@ -26,6 +26,7 @@ class HistoryFragment : Fragment() {
     var sdf: SimpleDateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var purchaseRecyclerView: RecyclerView
+    private lateinit var purchaseRecyclerViewFromDate: RecyclerView
 
     private var purchaseAdapter: PurchaseAdapter? = PurchaseAdapter(emptyList())
 
@@ -47,6 +48,9 @@ class HistoryFragment : Fragment() {
 
         purchaseRecyclerView = view.findViewById(R.id.purchaseRecyclerView)
         purchaseRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        purchaseRecyclerViewFromDate = view.findViewById(R.id.purchaseRecyclerViewFromDate)
+        purchaseRecyclerViewFromDate.layoutManager = LinearLayoutManager(context)
 
         return view
     }
@@ -100,6 +104,7 @@ class HistoryFragment : Fragment() {
                 paymentItem.text = purchase.payment
                 notePayItem.text = purchase.notePay
 
+                priceItem.isVisible = (purchase.price != 0f)
                 notePayItem.isVisible = (notePayItem.length() !=0)
 
             }
