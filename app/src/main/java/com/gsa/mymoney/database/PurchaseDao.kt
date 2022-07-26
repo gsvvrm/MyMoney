@@ -35,7 +35,7 @@ interface PurchaseDao {
     fun getDatePurchaseList () : LiveData<List<String>>
 
     //запрос действий за дату
-    @Query ("select * from Purchase where dateTypeString=(:dateTypeS)")
+    @Query ("select * from Purchase where dateTypeString=(:dateTypeS) order by date desc")
     fun getPurchasesForDate(dateTypeS:String) : LiveData<List<Purchase>>
 
 
